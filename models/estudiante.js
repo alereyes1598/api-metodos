@@ -8,11 +8,15 @@ module.exports = (sequelize, DataTypes) => {
     },
     matricula: {
       allowNull: false,
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
     },
     nombre: {
       allowNull: false,
-      type: DataTypes.INTEGER,
+      type: DataTypes.STRING,
+    },
+    apellidos: {
+      allowNull: false,
+      type: DataTypes.STRING,
     },
   }, {
     tableName: 'ESTUDIANTES',

@@ -8,14 +8,14 @@ module.exports = {
     },
     matricula: {
       allowNull: false,
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING,
     },
     nombre: {
       allowNull: false,
-      type: Sequelize.INTEGER,
+      type: Sequelize.STRING,
     },
-    aula: {
-      allowNull: true,
+    apellidos: {
+      allowNull: false,
       type: Sequelize.STRING,
     },
   }),

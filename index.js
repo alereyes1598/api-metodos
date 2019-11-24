@@ -38,10 +38,6 @@ app.use((error, req, res, next) => {
   return res.status(500).send({ msg: 'Error en el servidor.' , err});
 });
 
-
-var server = require('http').Server(app);
-var io = require('socket.io')(server);
-
 app.listen(3000, (err) => {
   if (err) {
     return console.error(err);

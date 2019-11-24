@@ -21,6 +21,10 @@ const put = async (req, res, next) => {
       },
     });
 
+    if(registroBoleto.cantidad > cantidad){
+      return res.status(400).send({msg: 'No se puede realizar la compra'});
+    }
+    
     await registroBoleto.update({
       cantidad: registroBoleto.cantidad - cantidad,
     });
