@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => queryInterface.createTable('BOLETOS_POR_ESTUDIANTE', {
-    id: {
+    idRelacion: {
       allowNull: false,
       type: Sequelize.INTEGER,
       autoIncrement: true,

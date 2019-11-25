@@ -4,7 +4,11 @@ const db = require('../models');
 const get = async (req, res, next) => {
   try {
     if (!req.params.matricula) {
-      const estudiantes = await db.Estudiante.findAll();
+      const estudiantes = await db.Estudiante.findAll({
+        include: [{
+          model: db.Empresa,
+        }]
+      });
       return res.status(200).send(estudiantes);
     }
     

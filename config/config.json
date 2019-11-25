@@ -1,15 +1,15 @@
 {
   "development": {
     "username": "root",
-    "password": "anselmo10",
-    "database": "SISTEMA_ESTUDIANTES",
+    "password": "123456789",
+    "database": "SISTEMA_BOLETOS",
     "host": "127.0.0.1",
     "dialect": "mysql",
     "operatorsAliases": false
   },
   "test": {
     "username": "root",
-    "password": null,
+    "password": "123456789",
     "database": "database_test",
     "host": "127.0.0.1",
     "dialect": "mysql",

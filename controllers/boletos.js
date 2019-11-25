@@ -7,7 +7,17 @@ const put = async (req, res, next) => {
     const { idEmpresa, matricula } = req.params;
     const { cantidad } = req.body;
 
+    const empresa  = await db.Empresa.findOne({
+     where: {
+       idEmpresa: idEmpresa
+     } 
+    });
+    console.log(empresa);
     
+    if (empresa == undefined){
+      return res.status(404).send({msg: 'No se encontro la empresa'});
+    }
+
     const estudiante = await db.Estudiante.findOne({
       where: {
         matricula: matricula,
@@ -21,7 +31,7 @@ const put = async (req, res, next) => {
       },
     });
 
-    if(registroBoleto.cantidad > cantidad){
+    if(registroBoleto.cantidad < cantidad){
       return res.status(400).send({msg: 'No se puede realizar la compra'});
     }
     

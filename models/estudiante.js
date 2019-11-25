@@ -1,3 +1,5 @@
+const db = require('../models');
+
 module.exports = (sequelize, DataTypes) => {
   const Estudiante = sequelize.define('Estudiante', {
     idEstudiante: {
@@ -22,6 +24,11 @@ module.exports = (sequelize, DataTypes) => {
     tableName: 'ESTUDIANTES',
     timestamps: false,
   });
-  
+
+Estudiante.associate = (models => {
+  Estudiante.belongsToMany(models.Empresa, {through: models.Boleto});
+});
+
+
   return Estudiante;
 };

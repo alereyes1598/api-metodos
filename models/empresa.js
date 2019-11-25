@@ -15,5 +15,8 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
   });
   
+  Empresa.associate = (models => {
+    Empresa.belongsToMany(models.Estudiante, {as: 'Empresa', through: models.Boleto, foreingKey: 'idEmpresa'});
+  });
   return Empresa;
 };
