@@ -2,12 +2,14 @@
 const db = require('../models');
 
 const get = async (req, res, next) => {
+  
+  let boletosArr = [];
+
   try {
     if (!req.params.matricula) {
       const estudiantes = await db.Estudiante.findAll();
       return res.status(200).send(estudiantes);
     }
-    let result = [];
     const estudiante = await db.Estudiante.findOne({
       where: {
         matricula: req.params.matricula,
@@ -21,21 +23,27 @@ const get = async (req, res, next) => {
     console.log(boletos[0].dataValues);
 
     boletos.forEach(async (element,index) => {
+      
+    });
+
+    for (const {item,index} of boletos.map((item, index) => ({ item, index }))) {
+
       const empresa = await db.Empresa.findOne({
         where: {
-          idEmpresa: element.idEmpresa,
+          idEmpresa: item.idEmpresa,
         },
       });
-      console.log(element.dataValues);
-      boletos[index].dataValues.empresa = empresa.dataValues.nombre;
-    });
+      boletosArr.push({nombre: empresa.nombre ,cantidad:boletos[index].cantidad});
+      
+    }
     
+    console.log(boletosArr);
+    let estudianteObj = estudiante.dataValues;
     
-    estudiante.dataValues.boletos = boletos;
-    
-    //console.log(boletos)
+    estudianteObj.boletos = boletosArr;
+    //console.log(estudianteObj);
 
-    return res.status(200).send([estudiante]);
+    return res.status(200).send([estudianteObj]);
   } catch (e) {
     return next(e);
   }
