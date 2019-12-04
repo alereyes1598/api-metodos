@@ -25,9 +25,7 @@ module.exports = (sequelize, DataTypes) => {
     timestamps: false,
   });
 
-Estudiante.associate = (models => {
-  Estudiante.belongsToMany(models.Empresa, {through: models.Boleto});
-});
+
 
 
   return Estudiante;
